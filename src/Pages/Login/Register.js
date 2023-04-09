@@ -1,7 +1,29 @@
 import React from 'react';
 import nsuLogo from '../../images/nsu-wide-logo.png'
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  if(user || gUser){
+    navigate('/')
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const name = e.target.name.value;
+    const password = e.target.password.value;
+    createUserWithEmailAndPassword(email,password);
+  }
+ 
     return (
       <div>
         <div className="p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
@@ -13,19 +35,22 @@ const Register = () => {
           </h1>
           <h1 className="text-yellow-300 text-2xl font-bold">Register</h1>
 
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
+              name='name'
               placeholder="Type your name"
               class="m-5 block mx-auto input w-full max-w-xs"
             />
             <input
               type="email"
+              name='email'
               placeholder="Type your email"
               class="m-5 block mx-auto input w-full max-w-xs"
             />
             <input
               type="password"
+              name='password'
               placeholder="Type your password"
               class="m-5 block mx-auto input w-full max-w-xs"
             />
@@ -51,10 +76,12 @@ const Register = () => {
               type="submit"
               value="Submit"
               placeholder="Type your password"
-              class="m-5 btn-accent text-white text-bold text-xl block mx-auto input w-full max-w-xs"
+              class="m-5 btn-accent cursor-pointer text-white text-bold text-xl block mx-auto input w-full max-w-xs"
             />
           </form>
           <p>Already have an account? - <a className='text-yellow-300 font-semibold' href='/login'>Login</a></p>
+
+          <button className="m-5 btn-accent text-white text-bold text-xl block mx-auto btn  w-full  max-w-xs" onClick={() => signInWithGoogle()}>Login With Google</button>
         </div>
       </div>
     );
