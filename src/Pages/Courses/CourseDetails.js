@@ -15,51 +15,56 @@ import {
     FaLinkedin,
   } from "react-icons/fa";
 import { Link, useParams } from 'react-router-dom';
+import CourseData from '../../hooks/CourseData';
+import "./courses.css";
+import "./CourseDetails.css";
 
 const CourseDetails = () => {
     const [show, setShow] = useState("video-container");
-    const [courses, setCourses] = useState([]);
-    const [data, setData] = useState([]);
+    const [courses, setCourses] = CourseData();
+    const { courseId } = useParams();
+    console.log(courseId);
+    
+    let details = courses?.find(course=> course?._id === courseId)
+    
+    console.log(details);
+    if(!details){
+      return <p>Loading</p>
+  }
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/courses')
-        .then(res=> res.json())
-        .then(data=> setCourses(data))
-    },[])
-  const { courseId } = useParams();
-  console.log(courseId);
-  
-  let details = courses?.find(course=> course?._id === courseId)
-  console.log(details);
-  // setData(details);
-  // console.log(data)
-  
-  
+  const {_id,courseTitle ,courseName ,courseInstructor ,courseDuration ,courseLecture ,courseLevel ,courseLanguage ,courseCertificate ,courseDescription,price} = details
+      // const {courseCertificate} = details;
+    // setData(details);
+    // console.log(data)
+    
+    let video = "video-container show";
+    let hide = "video-container";
 
-  let video = "video-container show";
-  let hide = "video-container";
-
-  const handleShow = () => {
-    setShow(video);
-  };
-  const handleHide = () => {
-    setShow(hide);
-  };
+    const handleShow = () => {
+      setShow(video);
+    };
+    const handleHide = () => {
+      setShow(hide);
+    };
 
   return (
     <div className="">
-      {/* <div className="top-banner text-start">
+      <div className="top-banner text-start">
         <h1>Courses Details</h1>
         <p>
           Home // <span>Courses Details</span>
         </p>
       </div>
-      <div className="row CourseDetails gx-5">
-        <div className="col-md-8 col-12 details-image text-start">
-          <div><h1>{courseTitle}</h1></div>
-          <a onClick={handleShow} href="#" className="pause" id="videolink">
+      <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 CourseDetails gap-5">
+        <div className="col-span-2 details-image text-start">
+          <div className='bg-blue-600 lg:h-80 md:h-48 h-36 flex justify-center items-center'><h1 className='text-5xl text-white'>{courseTitle}</h1></div>
+          <div className='flex justify-center items-center -m-12 mb-16'>
+            <hr className='border-4 w-36 border-lime-500'/>
+          <a onClick={handleShow} href="#" className="text-3xl text-white mx-8 bg-yellow-200 p-2 rounded-full" id="videolink">
             <FaPause></FaPause>
           </a>
+          <hr className='border-4 w-36 border-lime-500'/>
+          </div>
           <div id="videostory" className={show}>
             <span onClick={handleHide} className="close">
               &#10006;
@@ -74,9 +79,9 @@ const CourseDetails = () => {
               allowfullscreen
             ></iframe>
           </div>
-          <h1>{courseName}</h1>
-          <div className="d-flex justify-content-between  align-items-center">
-            <div className="d-flex justify-content-between align-items-center">
+          <h1 className='text-4xl'>{courseName}</h1>
+          <div className="flex justify-between items-center mt-5">
+            <div className="flex justify-between items-center">
               <img className="instructor" src={courseInstructor} alt="" />
               <p className="p-0 m-0 mx-3 text-muted fs-5">
                 By: <span className="text-dark">{courseInstructor}</span>
@@ -86,16 +91,16 @@ const CourseDetails = () => {
                 <span className="text-warning">286</span> Enrolled Students
               </small>
             </div>
-            <div>
-              <p className="p-0 m-0  text-muted">
+            <div className=''>
+              <p className="p-0 m-0 flex items-center  text-muted">
                 4.9{" "}
-                <span className="text-success ms-2">
+                <span className="text-success flex ms-2">
                   <FaStar />
                   <FaStar />
                   <FaStar />
                   <FaStar />
                 </span>
-                <FaStar /> (5,764 Rating)
+                <FaStar /> {" "}(5,764 Rating)
               </p>
             </div>
           </div>
@@ -131,12 +136,12 @@ The course will cover a range of topics, including:
             </p>
           </div>
         </div>
-        <div className="col-md-4 col-12 details-course-info">
-          <h2 className="fs-1 fw-bold price m-4">${price}</h2>
-          <hr className="w-75 m-auto" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+        <div className="details-course-info">
+          <h2 className="text-4xl font-bold text-green-700 price m-4">${price}</h2>
+          <hr className="w-10/12 m-auto" />
+          <div className="flex justify-between items-center text-lg my-1 my-4">
+            <p className='flex justify-between items-center'>
+              <span className="text-warning me-5">
                 <FaMale></FaMale>{" "}
               </span>{" "}
               Instructor
@@ -144,9 +149,9 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseInstructor}</p>
           </div>
           <hr className="w-75 m-auto m-0 p-0" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+          <div className='flex justify-between items-center fs-6 my-1 my-4'>
+            <p  className='flex justify-between items-center'>
+              <span className="text-warning  me-5">
                 <FaCalendarTimes></FaCalendarTimes>{" "}
               </span>{" "}
               Duration
@@ -154,9 +159,9 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseDuration}</p>
           </div>
           <hr className="w-75 m-auto  m-0 p-0" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+          <div className="flex justify-between items-center fs-6 my-1 my-4">
+            <p className='flex justify-between items-center'>
+              <span className="text-warning me-5">
                 <FaVideo></FaVideo>{" "}
               </span>{" "}
               Lectures
@@ -164,9 +169,9 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseLecture}</p>
           </div>
           <hr className="w-75 m-auto" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+          <div className="flex justify-between items-center fs-6 my-1 my-4">
+            <p className = 'flex justify-between items-center'>
+              <span className="text-warning me-5">
                 <FaGripLinesVertical></FaGripLinesVertical>{" "}
               </span>{" "}
               Level
@@ -174,9 +179,9 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseLevel}</p>
           </div>
           <hr className="w-75 m-auto" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+          <div className="flex justify-between items-center className = 'flex justify-between items-center' fs-6 my-1 my-4">
+            <p className = 'flex justify-between items-center'>
+              <span className="text-warning me-5">
                 <FaBook></FaBook>{" "}
               </span>{" "}
               Language
@@ -184,9 +189,9 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseLanguage}</p>
           </div>
           <hr className="w-75 m-auto" />
-          <div className="d-flex justify-content-between  align-items-center fs-6 my-1 mt-3">
-            <p>
-              <span className="text-warning">
+          <div className="flex justify-between items-center fs-6 my-1 my-4">
+            <p className='flex justify-between items-center'>
+              <span className="text-warning me-5">
                 <FaCertificate></FaCertificate>{" "}
               </span>{" "}
               Certificate
@@ -194,12 +199,12 @@ The course will cover a range of topics, including:
             <p className="text-muted">{courseCertificate}</p>
           </div>
           <hr className="w-75 m-auto" />
-          <Link to='/checkout'><button className="enroll btn rounded-pill px-5 py-3 text-white fs-5 m-5">
+          <Link to='/checkout'><button className="enroll h-16 btn rounded-full px-8 py-3 text-white text-xl font-bold m-10">
             Enroll Now
           </button></Link>
 
-          <h3 className="mb-5">Share Course</h3>
-          <div className="icon-social">
+          <h3 className="mb-5 text-2xl font-bold">Share Course</h3>
+          <div className="icon-social flex justify-between items-center">
             <span>
               <FaFacebookF />
             </span>
@@ -214,7 +219,7 @@ The course will cover a range of topics, including:
             </span>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

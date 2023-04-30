@@ -27,9 +27,9 @@ const Register = () => {
  
     return (
       <div>
-        <div className="p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
+        {/* <div className="p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
           <img className="ms-20 w-[350px]" src={nsuLogo} alt="" />
-        </div>
+        </div> */}
         <div className="bg-primary md:w-2/3 lg:w-1/2 mx-auto py-20 my-20">
           <h1 className="text-accent mb-5 text-3xl">
             Education Management System

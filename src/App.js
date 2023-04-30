@@ -12,10 +12,12 @@ import JobDetails from './Pages/JobPortal/JobDetails';
 import Post from './Pages/Post/Post';
 import Courses from './Pages/Courses/Courses';
 import CourseDetails from './Pages/Courses/CourseDetails';
+import CheckOut from './Pages/Courses/CheckOut';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
-    <div className="App max-w-screen-xl mx-auto">
+    <div className="App max-w-screen-xl mx-auto bg-lime-50">
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -23,10 +25,11 @@ function App() {
         <Route path='/Register' element={<Register></Register>}></Route>
         <Route path='/Post' element={<Post></Post>}></Route>
         <Route path='/JobPortal' element={<JobPortal></JobPortal>}></Route>
-        <Route path='/JobPortal' element={<JobPortal></JobPortal>}></Route>
+        <Route path='/Jobpost' element={<Jobpost></Jobpost>}></Route>
         <Route path='/Courses' element={<Courses></Courses>}></Route>
         <Route path='/Course-Details/:courseId' element={<CourseDetails></CourseDetails>}></Route>
         <Route path='/JobDetails/:jobId' element={<JobDetails></JobDetails>}></Route>
+        <Route path='/checkout' element={<PrivateRoute><CheckOut></CheckOut></PrivateRoute>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

@@ -24,9 +24,7 @@ const Login = () => {
       }
     return (
         <div>
-            <div className='p-3 bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500'>
-                <img className='ms-20 w-[350px]' src={nsuLogo} alt="" />
-            </div>
+            
             <div className='bg-primary md:w-2/3 lg:w-1/2 mx-auto py-20 my-20'>
                 <h1 className='text-accent mb-8 text-3xl'>Education Management System</h1>
                 <h1 className="text-yellow-300 text-2xl font-bold">Login</h1>
