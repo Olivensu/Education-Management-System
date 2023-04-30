@@ -41,35 +41,35 @@ const Register = () => {
               type="text"
               name='name'
               placeholder="Type your name"
-              class="m-5 block mx-auto input w-full max-w-xs"
+              className="m-5 block mx-auto input w-full max-w-xs"
             />
             <input
               type="email"
               name='email'
               placeholder="Type your email"
-              class="m-5 block mx-auto input w-full max-w-xs"
+              className="m-5 block mx-auto input w-full max-w-xs"
             />
             <input
               type="password"
               name='password'
               placeholder="Type your password"
-              class="m-5 block mx-auto input w-full max-w-xs"
+              className="m-5 block mx-auto input w-full max-w-xs"
             />
               <div className='flex justify-center'>
-              <label class="label  cursor-pointer">
-                <span class="label-text text-white me-5 text-xl">Student</span>
+              <label className="label  cursor-pointer">
+                <span className="label-text text-white me-5 text-xl">Student</span>
                 <input
                   type="radio"
                   name="radio-10"
-                  class="radio checked:bg-yellow-500"
+                  className="radio checked:bg-yellow-500"
                 />
               </label>
-             <label class="label  cursor-pointer">
-                <span class="label-text text-white me-5 text-xl">Teacher</span>
+             <label className="label  cursor-pointer">
+                <span className="label-text text-white me-5 text-xl">Teacher</span>
                 <input
                   type="radio"
                   name="radio-10"
-                  class="radio checked:bg-yellow-500"
+                  className="radio checked:bg-yellow-500"
                 />
               </label>
               </div>
@@ -77,7 +77,7 @@ const Register = () => {
               type="submit"
               value="Submit"
               placeholder="Type your password"
-              class="m-5 btn-accent cursor-pointer text-white text-bold text-xl block mx-auto input w-full max-w-xs"
+              className="m-5 btn-accent cursor-pointer text-white text-bold text-xl block mx-auto input w-full max-w-xs"
             />
           </form>
           <p>Already have an account? - <a className='text-yellow-300 font-semibold' href='/login'>Login</a></p>

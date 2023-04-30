@@ -31,9 +31,9 @@ const Login = () => {
                 <h1 className='text-accent mb-8 text-3xl'>Education Management System</h1>
                 <h1 className="text-yellow-300 text-2xl font-bold">Login</h1>
                 <form onSubmit={handleSubmit}>
-                    <input name='email' type="email" placeholder="Type your email" class="m-5 block mx-auto input w-full max-w-xs" />
-                    <input name='password' type="password" placeholder="Type your password" class="m-5 block mx-auto input w-full max-w-xs" />
-                    <input type="submit" value="Submit" placeholder="Type your password" class="m-5 btn-accent text-white text-bold text-xl block mx-auto input w-full max-w-xs" />
+                    <input name='email' type="email" placeholder="Type your email" className="m-5 block mx-auto input w-full max-w-xs" />
+                    <input name='password' type="password" placeholder="Type your password" className="m-5 block mx-auto input w-full max-w-xs" />
+                    <input type="submit" value="Submit" placeholder="Type your password" className="m-5 btn-accent text-white text-bold text-xl block mx-auto input w-full max-w-xs" />
                 </form>
                 <p>New Here? - <a className='text-yellow-300 font-semibold' href='/register'>Register</a></p>
                 <button className="m-5 btn-accent text-white text-bold text-xl block mx-auto btn  w-full  max-w-xs" onClick={() => signInWithGoogle()}>Login With Google</button>

@@ -8,17 +8,25 @@ import JobPortal from './Pages/JobPortal/JobPortal';
 import Navbar from './Pages/Shared/Navbar';
 import Footer from './Pages/Shared/Footer';
 import Jobpost from './Pages/JobPortal/Jobpost';
+import JobDetails from './Pages/JobPortal/JobDetails';
+import Post from './Pages/Post/Post';
+import Courses from './Pages/Courses/Courses';
+import CourseDetails from './Pages/Courses/CourseDetails';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-screen-xl mx-auto">
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/Register' element={<Register></Register>}></Route>
+        <Route path='/Post' element={<Post></Post>}></Route>
         <Route path='/JobPortal' element={<JobPortal></JobPortal>}></Route>
-        <Route path='/Jobpost' element={<Jobpost></Jobpost>}></Route>
+        <Route path='/JobPortal' element={<JobPortal></JobPortal>}></Route>
+        <Route path='/Courses' element={<Courses></Courses>}></Route>
+        <Route path='/Course-Details/:courseId' element={<CourseDetails></CourseDetails>}></Route>
+        <Route path='/JobDetails/:jobId' element={<JobDetails></JobDetails>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
