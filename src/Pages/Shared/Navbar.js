@@ -10,6 +10,9 @@ const Navbar = () => {
   const logout = () => {
     signOut(auth);
   };
+  console.log(user);
+  const username = user?.displayName?.split(" ");
+
     const navItems = <>
             <li>
               <a href='/' className='text-white'>Home</a>
@@ -18,7 +21,7 @@ const Navbar = () => {
               <a className='text-white'>Profile</a>
             </li>
             <li>
-              <a href='/Courses' className='text-white'>Courses</a>
+              <a href='/TotalCourses' className='text-white'>Courses</a>
             </li>
             <li>
               <a href='/JobPortal' className='text-white'>Job Portal</a>
@@ -27,17 +30,9 @@ const Navbar = () => {
               <a href='/post' className='text-white'>Post</a>
             </li>
             <li>
-              <div>
-              <img
-                  className="w-8 rounded-full"
-                  src={user ? user?.photoURL : noUser}
-                />
-                <a className='text-white'>{user?.displayName?.slice(0,7).toUpperCase()}</a>
-                {
-                  user ? <a className='text-white' onClick={logout}>Sign Out</a>: <a className='text-white' href='/login'>Login</a>
-                }
-              </div>
+              <a href='/dashboard' className='text-white'>Dashboard</a>
             </li>
+            
             </>
     return (
       <div className="navbar bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500">
@@ -61,12 +56,24 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-blue-500 rounded-box w-52"
             >
               {
                 navItems
               }
+              <div className='flex flex-col justify-center items-center ms-3'>
+              <img
+                  className="w-8 rounded-full"
+                  src={user ? user?.photoURL : noUser}
+                />
+                <p className='text-white'>{username ? username[0]?.toUpperCase(): ''}</p>
+                
+            </div>
+                {
+                  user ? <a className='text-white  btn btn-sm block ms-5 bg-red-700 flex justify-center items-center' onClick={logout}>Sign Out</a>: <a className='text-white btn-primary btn btn-sm block ms-5  flex justify-center items-center' href='/login'>Login</a>
+                }
             </ul>
+            
           </div>
           <img className='ms-20 w-[290px]' src={nsuLogo} alt="" />
         </div>
@@ -76,6 +83,17 @@ const Navbar = () => {
                 navItems
             }
           </ul>
+          <div className='flex flex-col justify-center items-center ms-3'>
+              <img
+                  className="w-8 rounded-full"
+                  src={user ? user?.photoURL : noUser}
+                />
+                <p className='text-white'>{username ? username[0]?.toUpperCase(): ''}</p>
+                
+            </div>
+                {
+                  user ? <a className='text-white  btn btn-sm block ms-5 bg-red-700 flex justify-center items-center' onClick={logout}>Sign Out</a>: <a className='text-white btn-primary btn btn-sm block ms-5  flex justify-center items-center' href='/login'>Login</a>
+                }
         </div>
       </div>
     );

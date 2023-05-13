@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCourses = () => {
+const AddBlogs = () => {
     const [creatCourse, setCreatCourse] = useState([]);
     const handleAddCourse =(e)=>{
         e.preventDefault();
@@ -111,4 +111,4 @@ const AddCourses = () => {
     );
 };
 
-export default AddCourses;
+export default AddBlogs;

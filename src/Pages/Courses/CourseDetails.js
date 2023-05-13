@@ -55,7 +55,7 @@ const CourseDetails = () => {
           Home // <span>Courses Details</span>
         </p>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 CourseDetails gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 CourseDetails gap-5">
         <div className="col-span-2 details-image text-start">
           <div className='bg-blue-600 lg:h-80 md:h-48 h-36 flex justify-center items-center'><h1 className='text-5xl text-white'>{courseTitle}</h1></div>
           <div className='flex justify-center items-center -m-12 mb-16'>
@@ -136,7 +136,7 @@ The course will cover a range of topics, including:
             </p>
           </div>
         </div>
-        <div className="details-course-info">
+        <div className="details-course-info w-full lg:col-span-1 col-span-1 md:col-span-2">
           <h2 className="text-4xl font-bold text-green-700 price m-4">${price}</h2>
           <hr className="w-10/12 m-auto" />
           <div className="flex justify-between items-center text-lg my-1 my-4">

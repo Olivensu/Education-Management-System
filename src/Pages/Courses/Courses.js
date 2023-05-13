@@ -1,6 +1,7 @@
 import React from 'react';
 import AddCourses from './AddCourses';
 import ViewCourses from './ViewCourses';
+import { Link } from 'react-router-dom';
 
 const Courses = () => {
     return (
@@ -13,7 +14,7 @@ const Courses = () => {
             </div>
             <p>You can find your favorite courses here and enrolled quickly.</p> 
             <ViewCourses></ViewCourses>
-            <AddCourses></AddCourses>
+            <Link to='/totalCourses'><button className='btn rounded-pill px-5 py-3 bg-success fs-5 text-white my-5'>See All The Courses</button></Link>
         </div>
     );
 };

@@ -12,9 +12,9 @@ const ViewCourses = () => {
     console.log(courses)
     
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-28'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-28'>
             {
-                courses.map(course=><Course key={course._id} course={course}></Course>)
+                courses.map(course=><Course key={course._id} course={course}></Course>).slice(0,3)
             }
         </div>
     );

@@ -92,11 +92,11 @@
     background-color: #FFA300 ;
 }
 
-@media  screen and (min-width: 1480px) {
+/* @media  screen and (min-width: 1480px) {
     .CourseDetails{
         margin: 100px 250px;
     }
-}
+} */
 @media  screen and (max-width: 768px) {
     .CourseDetails{
         margin: 10px;
