@@ -8,11 +8,7 @@ const ForgetPass = () => {
     const auth = getAuth();
       
       const handleResetEmail = () => {
-        sendPasswordResetEmail(auth, emails)
-        .then(()=>{
-          alert("Email send")
-          
-        })
+        return sendPasswordResetEmail(auth, emails);
       }
     return (
         <div>
